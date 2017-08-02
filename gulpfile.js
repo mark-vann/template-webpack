@@ -132,4 +132,4 @@ gulp.task('d', ['default'], () => {
     }));
 });
 
-gulp.task('p', () => sequence('imagemin', 'webpack-build'));
+gulp.task('p', () => sequence('rimraf', 'imagemin', 'webpack-build'));

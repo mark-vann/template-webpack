@@ -11,7 +11,7 @@ console.log(colorFunc(`webpack.DEV_MODE = ${DEV_MODE}, process.env.NODE_ENV = ${
 const config = {
   context: path.join(__dirname, '/src'),
   entry: {
-    index: ['./js/index.js'],
+    index: ['./index.js'],
     // vendor: ['device'],
   },
   output: {
@@ -28,6 +28,7 @@ const config = {
       // device: path.resolve('./src/lib/device.min'),
     },
     modules: [
+      path.resolve('./src'),
       path.resolve('./src/js'),
       path.resolve('./src/css'),
       path.resolve('./src/html'),
@@ -59,6 +60,8 @@ const config = {
       errorDetails: true, // add details to errors (like resolving log)
       chunkOrigins: false // add the origins of chunks and chunk merging info
     },
+    host: '0.0.0.0',
+    disableHostCheck: true,
   },
 };
 
@@ -80,7 +83,10 @@ config.module = {
         ]
       }
     }],
-    include: path.resolve('src/js'),
+    include: [
+      path.resolve('src'),
+      path.resolve('src/js'),
+    ],
     exclude: /node_modules/,
   }, {
     test: /\.styl$/,
@@ -97,13 +103,13 @@ config.module = {
     }], {
       loader: 'css',
       options: {
-        '-minimize': true,
-        sourceMap: true,
+        minimize: true,
+        sourceMap: DEV_MODE,
       }
-    }, 'postcss', {
+    }, {
       loader: 'stylus',
       options: {
-        sourceMap: true,
+        sourceMap: DEV_MODE,
         preferPathResolver: 'webpack',
       }
     }],
@@ -142,7 +148,7 @@ config.module = {
     include: path.resolve('src/html'),
     exclude: /node_modules/,
   }, {
-    test: /\.(jpg|png|gif|svg|ico)$/,
+    test: /\.(jpg|png|gif|svg)$/,
     use: [{
       loader: 'url',
       options: {

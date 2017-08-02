@@ -1,0 +1,35 @@
+doctype html
+html
+  head
+    meta(name="viewport", content="width=device-width")
+    title 馬克在測試
+
+    link(rel="stylesheet", href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+    if (!DEV_MODE)
+      link(rel="stylesheet", href=`asset/css/main.css?${HASH}`)
+      link(rel="stylesheet", href=`asset/css/index.css?${HASH}`)
+
+  body
+    <!-- #{TIME} -->
+    .container-fluid
+      - for (var i = 0; i < 12; i++)
+        .col-md-1
+          img(src="~Jellyfish.jpg")
+
+      - for (var i = 0; i < 6; i++)
+        .col-md-2
+          img(src="~Jellyfish.jpg")
+
+      - for (var i = 0; i < 4; i++)
+        .col-md-3
+          img(src="~Jellyfish.jpg")
+
+      - for (var i = 0; i < 3; i++)
+        .col-md-4
+          img(src="~Jellyfish.jpg")
+
+      - for (var i = 0; i < 2; i++)
+        .col-md-6
+          img(src="~Jellyfish.jpg")
+
+    script(src=`asset/js/index.js?${HASH}`)
