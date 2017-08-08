@@ -6,11 +6,15 @@
   "scripts": {
     "d": "gulp d",
     "p": "gulp p",
-    "test": "test"
+    "test": "jest"
   },
   "author": "MarkVann",
   "license": "ISC",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "devDependencies": {
+    "axios": "^0.16.2",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
@@ -41,6 +45,7 @@
     "html-loader": "^0.4.5",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-pngquant": "^5.0.0",
+    "jest": "^20.0.4",
     "merge-stream": "^1.0.1",
     "moment": "^2.18.1",
     "postcss-loader": "^1.3.3",
